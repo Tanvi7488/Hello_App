@@ -1,24 +1,31 @@
-//UC5 
+/**
+ * UC6: HelloApp
+ * Accepts multiple names as command-line arguments and prints them
+ * in a comma-separated greeting format.
+ */
+
 public class HelloApp {
+
     public static void main(String[] args) {
 
-        String name = "World";
-
-        if (args.length > 0) {
-            StringBuilder nameBuilder = new StringBuilder();
-            boolean first = true;
-
-            for (String n : args) {
-                if (!first) {
-                    nameBuilder.append(", ");
-                }
-                nameBuilder.append(n);
-                first = false;
-            }
-
-            name = nameBuilder.toString();
+        // If no names are given
+        if (args.length == 0) {
+            System.out.println("Hello, World!");
+            return;
         }
 
-        System.out.println("Hello, " + name + "!");
+        // Use StringBuilder to combine names
+        StringBuilder nameBuilder = new StringBuilder();
+
+        // Enhanced for loop to iterate through arguments
+        for (String name : args) {
+            nameBuilder.append(name).append(", ");
+        }
+
+        // Remove the last comma and space
+        String names = nameBuilder.substring(0, nameBuilder.length() - 2);
+
+        // Print greeting
+        System.out.println("Hello, " + names + "!");
     }
 }
